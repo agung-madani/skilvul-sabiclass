@@ -8,7 +8,13 @@ SabiClass for Equitable Access to Disability Education
 
 ![image](https://github.com/user-attachments/assets/270216ef-5778-498e-bacd-fd6e529ccfbd)
 
-This application is designed for hosting live video classes or meetings with two participants. It utilizes WebRTC for peer-to-peer video/audio communication, Socket.IO for real-time messaging and events, and integrates various APIs for additional functionalities such as text summarization and speech recognition.
+This application is designed for hosting live video classes or meetings with two participants. It utilizes WebRTC for peer-to-peer video/audio communication, Socket.IO for real-time messaging and events, and integrates various APIs for additional functionalities such as, speech-to-text, text-to-speech, text summarization, hand landmark, and sign language recognition.
+
+## Techstack
+
+![image](https://github.com/user-attachments/assets/f33344b8-e45b-466e-a6e3-e15f320d8118)
+
+![image](https://github.com/user-attachments/assets/be6ac99c-b01a-4b71-aae5-81c497524a13)
 
 ## Features
 
@@ -28,13 +34,6 @@ The application uses Socket.IO for real-time communication. Key events include:
 - `message`: Handles chat messages between users.
 - `disconnect`: Manages user disconnection from the room.
 
-## API Endpoints
-
-- **GET `/api/proxy-json`**: Fetches JSON model from external API.
-- **GET `/api/proxy-bin`**: Fetches binary model from external API.
-- **POST `/api/summarize`**: Summarizes text based on input data.
-- **GET `/api/get-speech-token`**: Retrieves speech token for authorization.
-
 ## Contributor
 
 - Aghnia Nurhidayah - Artificial Intelligence
@@ -43,5 +42,9 @@ The application uses Socket.IO for real-time communication. Key events include:
 - Rifaldi Achmad F. - Artificial Intelligence
 - Abi Daffa Arilla - Data
 - Khairunnisa Nada M. - Data
+
+![image](https://github.com/user-attachments/assets/b887328f-91b8-4d70-acbd-c633a6a0fe98)
+
+![image](https://github.com/user-attachments/assets/21ee0f8f-0006-4089-bfd1-bab835696a31)
 
 ---
