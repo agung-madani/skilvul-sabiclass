@@ -6,6 +6,8 @@ SabiClass for Equitable Access to Disability Education
 
 ## Overview
 
+![image](https://github.com/user-attachments/assets/270216ef-5778-498e-bacd-fd6e529ccfbd)
+
 This application is designed for hosting live video classes or meetings with two participants. It utilizes WebRTC for peer-to-peer video/audio communication, Socket.IO for real-time messaging and events, and integrates various APIs for additional functionalities such as text summarization and speech recognition.
 
 ## Features
