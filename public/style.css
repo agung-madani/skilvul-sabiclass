@@ -1,0 +1,472 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --main-darklg: #1d2635;
+  --main-dark: #161d29;
+  --primary-color: #00b8a9;
+  --main-light: #eeeeee;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  position: relative;
+  width: 100%;
+  background-color: var(--main-darklg);
+}
+
+.logo > h3 {
+  color: var(--main-light);
+}
+
+.recording_text {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 1rem;
+  position: absolute;
+  left: 0;
+  top: 30%;
+}
+
+.display_action_text {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 1rem;
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+
+.downloadRecordAndSummarizeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00b8a9;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  padding: 3px 15px;
+  position: absolute;
+  left: 0;
+  top: 25%;
+}
+
+.user_guide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00b8a9;
+  border-radius: 50px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  padding: 3px 5px;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+.user_guide_image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.user_guide_image.hidden {
+  display: none;
+}
+
+.close_guide {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.image_container {
+  width: 50%;
+  height: 80%; /* Adjust this value as needed */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image_container img {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.main {
+  overflow: hidden;
+  height: 92vh;
+  display: flex;
+}
+
+.main_left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.videos_group {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--main-dark);
+}
+
+video {
+  border-radius: 1rem;
+  margin: 0.5rem;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+/* canvas {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+} */
+
+.options {
+  padding: 1rem;
+  display: flex;
+  background-color: var(--main-darklg);
+}
+
+.options_left {
+  display: flex;
+}
+
+.options_right {
+  margin-left: auto;
+  display: flex;
+}
+
+.options_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 50px;
+  border-radius: 50px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  width: 50px;
+  margin: 0 0.5rem;
+}
+
+.end_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6484a;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  padding: 0 5px;
+}
+
+.send_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 55px;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  width: 80px;
+  padding: 20px;
+  margin-left: 5px;
+}
+
+.gestureToolsButton {
+  background-color: #00b8a9;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  padding: 3px 8px;
+}
+
+.background_red {
+  background-color: #f6484a;
+}
+
+.main_right {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  background-color: #242f41;
+}
+
+.main_chat_window {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.main_chat_window::-webkit-scrollbar {
+  display: none;
+}
+
+.main_message_container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_message_container > input {
+  height: 50px;
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.message > b {
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.message > b > i {
+  margin-right: 0.7rem;
+  font-size: 1.5rem;
+}
+
+.message > span {
+  background-color: #eeeeee;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#video-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+#showChat {
+  display: none;
+}
+
+.header_back {
+  display: none;
+  position: absolute;
+  font-size: 1.3rem;
+  top: 17px;
+  left: 28px;
+  color: #fff;
+}
+
+.main_right {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  background-color: #242f41;
+}
+
+.main_chat_window {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.main_chat_window::-webkit-scrollbar {
+  display: none;
+}
+
+.main_message_container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_message_container > input {
+  height: 50px;
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.message > b {
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.message > b > i {
+  margin-right: 0.7rem;
+  font-size: 1.5rem;
+}
+
+.message > span {
+  background-color: #eeeeee;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.video-container {
+  position: relative;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.quiz_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.quiz_content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.quiz_header {
+  text-align: center;
+}
+
+.captions_container {
+  position: fixed;
+  top: 70%;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.gesture_container {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.captions_text {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.quiz_questions {
+  max-height: 400px; /* Set maximum height for scrollability */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: add border for visual separation */
+  padding: 10px; /* Optional: add padding for spacing */
+}
+
+.question-item {
+  margin-bottom: 20px; /* Optional: add margin between questions */
+}
+
+.question-item p {
+  font-weight: bold; /* Optional: style question text */
+}
+
+.question-item ul {
+  list-style-type: none; /* Optional: remove default list styles */
+  padding: 0; /* Optional: remove default list padding */
+}
+
+.question-item li {
+  margin-bottom: 5px; /* Optional: add margin between choices */
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>videoChatApp</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const ROOM_ID = "<%= roomId %>";
+      const HOST = "<%= host %>";
+      const ACCESSIBILITY = "<%= accessibility %>";
+    </script>
+  </head>
+  <div class="user_guide_image hidden" id="user_guide_image">
+    <button id="close_guide" class="close_guide">&times;</button>
+    <div class="image_container">
+      <img
+        id="guide_image_1"
+        src="./images/USER-GUIDE- (1).png"
+        alt="User Guide 1"
+      />
+      <img
+        id="guide_image_2"
+        src="./images/USER-GUIDE- (2).png"
+        alt="User Guide 2"
+      />
+      <img
+        id="guide_image_3"
+        src="./images/USER-GUIDE- (3).png"
+        alt="User Guide 3"
+      />
+      <img
+        id="guide_image_4"
+        src="./images/USER-GUIDE- (4).png"
+        alt="User Guide 4"
+      />
+      <img
+        id="guide_image_5"
+        src="./images/USER-GUIDE- (5).png"
+        alt="User Guide 5"
+      />
+      <img
+        id="guide_image_6"
+        src="./images/USER-GUIDE- (6).png"
+        alt="User Guide 6"
+      />
+      <img
+        id="guide_image_7"
+        src="./images/USER-GUIDE- (7).png"
+        alt="User Guide 7"
+      />
+      <img
+        id="guide_image_8"
+        src="./images/USER-GUIDE- (8).png"
+        alt="User Guide 8"
+      />
+      <img
+        id="guide_image_9"
+        src="./images/USER-GUIDE- (9).png"
+        alt="User Guide 9"
+      />
+      <img
+        id="guide_image_10"
+        src="./images/USER-GUIDE- (10).png"
+        alt="User Guide 10"
+      />
+    </div>
+  </div>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <h3>Live Class</h3>
+        <p id="recordingText" class="recording_text hidden">
+          <i class="bi bi-record-circle background_red"></i>Recording...
+        </p>
+        <p id="displayActionText" class="display_action_text"></p>
+        <button
+          id="downloadRecordAndSummarizeButton"
+          class="downloadRecordAndSummarizeButton hidden"
+        >
+          <i class="bi bi-file-earmark-arrow-down-fill"></i>
+        </button>
+        <button id="user_guide" class="user_guide">
+          <i class="bi bi-info-circle-fill"></i>
+        </button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="main_left">
+        <div class="videos_group">
+          <div id="video-grid">
+            <canvas
+              class="output_canvas hidden"
+              id="output_canvas"
+              style="position: absolute; left: 26%; top: 10%"
+            ></canvas>
+          </div>
+        </div>
+        <div class="options">
+          <div class="options_left">
+            <button id="endClass" class="end_button background_red hidden">
+              End Class
+            </button>
+            <button id="stopVideo" class="options_button">
+              <i class="fa fa-video-camera"></i>
+            </button>
+            <button id="muteButton" class="options_button">
+              <i class="fa fa-microphone"></i>
+            </button>
+            <button id="disconnect" class="options_button background_red">
+              <i class="fa fa-phone"></i>
+            </button>
+          </div>
+          <div class="options_right">
+            <button id="quizVoiceButton" class="options_button hidden">
+              <i class="bi bi-question-diamond"></i>
+            </button>
+            <button id="showButton" class="options_button hidden">
+              <i class="bi bi-pip"></i>
+            </button>
+            <button id="captionsButton" class="options_button hidden">
+              <i class="bi bi-badge-cc"></i>
+            </button>
+            <button id="gestureButton" class="options_button hidden">
+              <i class="fas fa-deaf"></i>
+            </button>
+            <button id="canvasButton" class="options_button">
+              <i class="fas fa-window-maximize"></i>
+            </button>
+            <button id="inviteButton" class="options_button">
+              <i class="fas fa-user-plus"></i>
+            </button>
+            <button id="toggleChatButton" class="options_button">
+              <i class="fas fa-comment-alt"></i>
+            </button>
+            <button id="recordButton" class="options_button hidden">
+              <i class="bi bi-record-btn"></i>
+            </button>
+            <button id="quizButton" class="options_button hidden">
+              <i class="fas fa-question-circle"></i>
+            </button>
+            <button id="downloadQuizButton" class="options_button hidden">
+              <i class="bi bi-download"></i>
+            </button>
+            <button id="downloadQuizButtonTN" class="options_button hidden">
+              <i class="bi bi-download"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="main_right">
+        <div class="main_chat_window">
+          <div class="messages"></div>
+        </div>
+        <div class="main_message_container">
+          <input
+            id="chat_message"
+            type="text"
+            placeholder="Type message here..."
+          />
+          <button id="sendMessage" class="send_button">Send</button>
+        </div>
+      </div>
+    </div>
+    <div id="quizVoiceContainer" class="quiz_container hidden">
+      <div id="quizVoiceContent" class="captions_content"></div>
+    </div>
+    <div id="captionsContainer" class="captions_container hidden">
+      <div id="captionsContent" class="captions_content">
+        <div id="captionsText" class="captions_text"></div>
+      </div>
+    </div>
+    <div id="gestureContainer" class="gesture_container flex-column hidden">
+      <div id="controls" class="hidden">
+        <button id="restartButton" class="gestureToolsButton background_red">
+          Delete All
+        </button>
+        <button id="backspaceButton" class="gestureToolsButton">
+          Backspace
+        </button>
+        <button id="startButton" class="gestureToolsButton">
+          Start Predict
+        </button>
+        <button
+          id="stopButton"
+          style="display: none"
+          class="gestureToolsButton background_red"
+        >
+          Stop Predict
+        </button>
+      </div>
+      <div id="gestureContent" class="captions_content">
+        <div id="gestureText" class="captions_text"></div>
+      </div>
+    </div>
+    <div id="quizContainer" class="quiz_container hidden">
+      <div id="quizContent" class="quiz_content">
+        <h2>Waktunya Quiz!</h2>
+        <div id="quizHeader" class="quiz_header"></div>
+        <div id="quizQuestions" class="quiz_questions">
+          <!-- Questions will be added dynamically here -->
+        </div>
+        <div class="quiz_controls">
+          <button id="submitQuizButton" class="quiz_button">Selesai</button>
+          <button id="closeQuizButton" class="quiz_button">Tutup</button>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="
+https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js
+"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+    <script src="/token_util.js" type="module" defer></script>
+    <script src="/captions.js" type="module" defer></script>
+    <script src="/script.js" type="module" defer></script>
+    <script src="/chat.js" type="module" defer></script>
+    <script src="/quiz.js" type="module" defer></script>
+    <script src="/quizVoice.js" type="module" defer></script>
+    <script src="/record.js" type="module" defer></script>
+    <script src="/gesture.js" type="module" defer></script>
+    <script src="/userGuide.js" type="module" defer></script>
+  </body>
+</html>

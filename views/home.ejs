@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SABICLASS</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+      :root {
+        --main-darklg: #1d2635;
+        --main-dark: #161d29;
+        --primary-color: #00b8a9;
+        --main-light: #eeeeee;
+        --button-hover: #008f9b;
+        --input-bg: #2a2e37;
+        --input-border: #444950;
+        --input-focus: #00b8a9;
+        --input-placeholder: #b0b3b8;
+        --font-family: "Poppins", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #222831;
+        color: #eeeeee;
+        font-family: var(--font-family);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #393e46;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      header {
+        margin-bottom: 20px;
+      }
+
+      header img {
+        width: 100%;
+        height: auto;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--input-border);
+        background-color: var(--input-bg);
+        color: var(--main-light);
+        font-size: 1em;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]::placeholder {
+        color: var(--input-placeholder);
+      }
+
+      input[type="text"]:focus {
+        border-color: var(--input-focus);
+        outline: none;
+      }
+
+      .checkbox-group {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        font-weight: normal;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        margin-right: 10px;
+        accent-color: var(--primary-color);
+        width: 18px;
+        height: 18px;
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: var(--main-light);
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: var(--button-hover);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="logo.png" alt="SABICLASS Logo" />
+      </header>
+      <form action="/create-room" method="POST" role="form">
+        <div class="form-group">
+          <label for="host">Host Name</label>
+          <input
+            type="text"
+            id="host"
+            name="host"
+            required
+            aria-label="Host Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="accessibility">Accessibility Options</label>
+          <div class="checkbox-group" aria-label="Accessibility Options">
+            <label>
+              <input
+                type="checkbox"
+                id="normal"
+                name="accessibility"
+                value="normal"
+              />
+              Normal
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                id="blind"
+                name="accessibility"
+                value="blind"
+              />
+              Blind
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                id="deaf"
+                name="accessibility"
+                value="deaf"
+              />
+              Deaf
+            </label>
+          </div>
+        </div>
+        <button type="submit">Create a Session</button>
+      </form>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(
+          '.checkbox-group input[type="checkbox"]'
+        );
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            if (this.checked) {
+              checkboxes.forEach((cb) => {
+                if (cb !== this) cb.checked = false;
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
