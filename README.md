@@ -4,6 +4,11 @@
 
 SabiClass for Equitable Access to Disability Education
 
+# Link 
+
+[Demo App](https://youtu.be/4zzDnqod2Vw?si=9qq7u1JAQqh_nhZg)
+[Deck Project](https://www.canva.com/design/DAGJbzed1uo/3H6Lhfe0x_N48YHrB1eDrA/edit?utm_content=DAGJbzed1uo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## Overview
 
 ![image](https://github.com/user-attachments/assets/270216ef-5778-498e-bacd-fd6e529ccfbd)
